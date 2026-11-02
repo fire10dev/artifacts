@@ -1,0 +1,572 @@
+/* ============================================
+   RETRO TERMINAL — An Obsidian Theme
+   Palette ported from fire10.dev (field-notes look)
+   Dark: Forest phosphor (lime/sun on deep green)
+   Light: Warm paper (forest ink, lime/sun/coral accents)
+   Fonts stay full-monospace (terminal identity kept).
+   ============================================ */
+
+/* ── Font Stack: real terminal fonts ── */
+:root {
+  --font-monospace-theme: "Monaco", "Menlo", "IBM Plex Mono", "Cascadia Mono", "Courier New", monospace;
+}
+
+.theme-dark,
+.theme-light {
+  --font-default: var(--font-monospace-theme);
+  --font-monospace-default: var(--font-monospace-theme);
+  --font-interface-override: var(--font-monospace-theme);
+  --font-text-override: var(--font-monospace-theme);
+  --font-monospace-override: var(--font-monospace-theme);
+  --font-text: var(--font-monospace-theme);
+  --font-interface: var(--font-monospace-theme);
+  --inline-title-font: var(--font-monospace-theme);
+  --font-editor: var(--font-monospace-theme);
+  --font-preview: var(--font-monospace-theme);
+  --font-text-size: 14px;
+
+  --radius-s: 0px;
+  --radius-m: 0px;
+  --radius-l: 0px;
+  --icon-stroke: 1.5px;
+}
+
+/* Force monospace on EVERYTHING — no exceptions */
+body, input, button, textarea, select,
+.markdown-source-view, .markdown-reading-view, .markdown-preview-view,
+.markdown-preview-view *, .markdown-reading-view *,
+.cm-editor, .cm-content, .cm-line,
+.nav-file-title, .nav-folder-title,
+.view-header-title, .view-header-breadcrumb, .workspace-tab-header,
+.status-bar, .tooltip, .menu, .modal,
+.setting-item, .setting-item-name, .setting-item-description,
+code, pre, .cm-inline-code, .cm-hmd-codeblock,
+code[class*="language-"], pre[class*="language-"],
+.markdown-rendered code, .markdown-rendered pre,
+span.cm-inline-code, .HyperMD-codeblock,
+.code-block-flair, .copy-code-button {
+  font-family: "Monaco", "Menlo", "IBM Plex Mono", "Cascadia Mono", "Courier New", monospace !important;
+}
+
+/* Kill circles/backgrounds on clickable icons */
+.clickable-icon {
+  border-radius: 0 !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+/* Mobile: clean backgrounds, square corners */
+.view-actions,
+.view-header-nav-buttons,
+.view-header,
+.mobile-navbar,
+.mobile-navbar-actions,
+.workspace-tab-header-container {
+  border-radius: 0 !important;
+}
+
+/* Kill pill shapes on toggles */
+.checkbox-container {
+  border-radius: 0 !important;
+}
+.checkbox-container::after {
+  border-radius: 0 !important;
+}
+
+/* ============================================
+   DARK MODE — Forest Phosphor (fire10.dev, night)
+   Deep forest-green base, warm-cream ink, lime + sun accents
+   ============================================ */
+.theme-dark {
+  --background-primary: #0e2a22;
+  --background-primary-alt: #103128;
+  --background-secondary: #0a231c;
+  --background-secondary-alt: #081d17;
+  --background-modifier-border: #1d5445;
+  --background-modifier-border-hover: #2a6b58;
+  --background-modifier-border-focus: #c9e36c;
+  --background-modifier-form-field: #081d17;
+  --background-modifier-form-field-highlighted: #103128;
+  --background-modifier-box-shadow: rgba(0, 0, 0, 0.4);
+  --background-modifier-success: #16402f;
+  --background-modifier-error: #3a1f18;
+  --background-modifier-error-rgb: 58, 31, 24;
+  --background-modifier-error-hover: #4a2a20;
+  --background-modifier-cover: rgba(6, 20, 16, 0.85);
+
+  /* Warm-cream phosphor text on forest */
+  --text-normal: #f2ecdd;
+  --text-muted: #a7bcac;
+  --text-faint: #6d857a;
+  --text-on-accent: #0e2a22;
+  --text-on-accent-inverted: #f2ecdd;
+  --text-error: #ec8a6a;         /* coral */
+  --text-error-hover: #f5a488;
+  --text-success: #c9e36c;       /* lime */
+  --text-selection: rgba(201, 227, 108, 0.18);
+  --text-highlight-bg: rgba(233, 185, 73, 0.22);
+  --text-highlight-bg-active: rgba(233, 185, 73, 0.35);
+  --text-accent: #c9e36c;        /* lime */
+  --text-accent-hover: #d8ec8f;
+
+  /* Interactive */
+  --interactive-normal: #103128;
+  --interactive-hover: #16402f;
+  --interactive-accent: #c9e36c;   /* lime */
+  --interactive-accent-hovered: #d8ec8f;
+  --interactive-accent-rgb: 201, 227, 108;
+
+  /* Headings: cream → lime → sun */
+  --h1-color: #fdf8ec;
+  --h2-color: #c9e36c;   /* lime */
+  --h3-color: #e9b949;   /* sun */
+  --h4-color: #d8ec8f;
+  --h5-color: #a7bcac;
+  --h6-color: #7d9084;
+
+  /* Links: sun pops against forest */
+  --link-color: #e9b949;
+  --link-color-hover: #f4ca67;
+  --link-external-color: #e9b949;
+  --link-external-color-hover: #f4ca67;
+  --link-unresolved-color: #d96c4b;  /* coral */
+  --link-unresolved-opacity: 0.8;
+  --link-decoration: underline;
+  --link-decoration-color: #e9b949;
+  --link-external-decoration: underline;
+
+  /* Tags: lime */
+  --tag-color: #c9e36c;
+  --tag-color-hover: #d8ec8f;
+  --tag-background: rgba(201, 227, 108, 0.1);
+  --tag-background-hover: rgba(201, 227, 108, 0.2);
+
+  /* Code */
+  --code-normal: #e9b949;   /* sun */
+  --code-background: #081d17;
+  --code-comment: #6d857a;
+
+  /* Scrollbar */
+  --scrollbar-bg: transparent;
+  --scrollbar-thumb-bg: rgba(201, 227, 108, 0.18);
+  --scrollbar-active-thumb-bg: rgba(201, 227, 108, 0.35);
+
+  /* Dividers */
+  --hr-color: #1d5445;
+
+  /* Nav / file explorer */
+  --nav-item-color: #a7bcac;
+  --nav-item-color-hover: #f2ecdd;
+  --nav-item-color-active: #c9e36c;
+  --nav-item-background-hover: rgba(201, 227, 108, 0.06);
+  --nav-item-background-active: rgba(201, 227, 108, 0.12);
+  --nav-indentation-guide-color: #1d5445;
+
+  /* Title bar / tabs */
+  --titlebar-background: #0a231c;
+  --titlebar-background-focused: #0e2a22;
+  --tab-text-color: #a7bcac;
+  --tab-text-color-focused: #f2ecdd;
+  --tab-text-color-focused-active: #c9e36c;
+  --tab-background-active: #0e2a22;
+
+  /* Blockquote: sun rail */
+  --blockquote-border-color: #e9b949;
+
+  /* Table */
+  --table-header-background: #103128;
+  --table-header-background-hover: #16402f;
+  --table-row-background-hover: rgba(201, 227, 108, 0.05);
+
+  /* Checkbox */
+  --checkbox-color: #c9e36c;
+  --checkbox-color-hover: #d8ec8f;
+  --checklist-done-color: #6d857a;
+}
+
+/* ============================================
+   LIGHT MODE — Warm Paper (fire10.dev, day)
+   Cream "paper", forest-green ink, lime/sun/coral accents
+   ============================================ */
+.theme-light {
+  /* Cream "paper" — matches fire10 --paper / --paper-deep */
+  --background-primary: #f5f0e5;
+  --background-primary-alt: #efe8d8;
+  --background-secondary: #e9e1cf;
+  --background-secondary-alt: #e2d9c4;
+  --background-modifier-border: #cfc4ae;      /* --line */
+  --background-modifier-border-hover: #b9ac91;
+  --background-modifier-border-focus: #123c32;
+  --background-modifier-form-field: #fffdf7;
+  --background-modifier-form-field-highlighted: #f5f0e5;
+  --background-modifier-box-shadow: rgba(24, 54, 45, 0.13);
+  --background-modifier-success: #dfe9c4;
+  --background-modifier-error: #f2ddd3;
+  --background-modifier-error-rgb: 242, 221, 211;
+  --background-modifier-error-hover: #ecd0c2;
+  --background-modifier-cover: rgba(245, 240, 229, 0.9);
+
+  /* Forest ink */
+  --text-normal: #18362d;        /* --ink */
+  --text-muted: #50655b;         /* --ink-soft */
+  --text-faint: #7d8b82;
+  --text-on-accent: #fffaf0;
+  --text-on-accent-inverted: #18362d;
+  --text-error: #b0472a;
+  --text-error-hover: #d96c4b;   /* coral */
+  --text-success: #1d5445;
+  --text-selection: rgba(201, 227, 108, 0.4);   /* lime */
+  --text-highlight-bg: rgba(233, 185, 73, 0.35); /* sun */
+  --text-highlight-bg-active: rgba(233, 185, 73, 0.5);
+  --text-accent: #1d5445;        /* --forest-light */
+  --text-accent-hover: #123c32;  /* --forest */
+
+  /* Interactive */
+  --interactive-normal: #efe8d8;
+  --interactive-hover: #e9e1cf;
+  --interactive-accent: #123c32;   /* forest */
+  --interactive-accent-hovered: #1d5445;
+  --interactive-accent-rgb: 18, 60, 50;
+
+  /* Headings: forest */
+  --h1-color: #123c32;
+  --h2-color: #123c32;
+  --h3-color: #1d5445;
+  --h4-color: #1d5445;
+  --h5-color: #50655b;
+  --h6-color: #50655b;
+
+  /* Links: forest ink, sun underline (see shared rules) */
+  --link-color: #123c32;
+  --link-color-hover: #1d5445;
+  --link-external-color: #123c32;
+  --link-external-color-hover: #1d5445;
+  --link-unresolved-color: #d96c4b;  /* coral */
+  --link-unresolved-opacity: 0.75;
+  --link-decoration: underline;
+  --link-decoration-color: #e9b949;  /* sun */
+  --link-external-decoration: underline;
+
+  /* Tags: lime chips */
+  --tag-color: #1d5445;
+  --tag-color-hover: #123c32;
+  --tag-background: rgba(201, 227, 108, 0.25);
+  --tag-background-hover: rgba(201, 227, 108, 0.55);
+
+  /* Code */
+  --code-normal: #123c32;
+  --code-background: #e9e1cf;
+  --code-comment: #7d8b82;
+
+  /* Scrollbar */
+  --scrollbar-bg: #efe8d8;
+  --scrollbar-thumb-bg: #cfc4ae;
+  --scrollbar-active-thumb-bg: #b9ac91;
+
+  /* Dividers */
+  --hr-color: #cfc4ae;
+
+  /* Nav */
+  --nav-item-color: #50655b;
+  --nav-item-color-hover: #18362d;
+  --nav-item-color-active: #123c32;
+  --nav-item-background-hover: rgba(24, 54, 45, 0.06);
+  --nav-item-background-active: rgba(201, 227, 108, 0.3);
+  --nav-indentation-guide-color: #cfc4ae;
+
+  /* Title bar / tabs */
+  --titlebar-background: #e9e1cf;
+  --titlebar-background-focused: #e2d9c4;
+  --tab-text-color: #50655b;
+  --tab-text-color-focused: #18362d;
+  --tab-text-color-focused-active: #123c32;
+  --tab-background-active: #f5f0e5;
+
+  /* Blockquote: sun rail */
+  --blockquote-border-color: #e9b949;
+
+  /* Table */
+  --table-header-background: #e9e1cf;
+  --table-header-background-hover: #e2d9c4;
+  --table-row-background-hover: rgba(201, 227, 108, 0.25);
+
+  /* Checkbox */
+  --checkbox-color: #123c32;
+  --checkbox-color-hover: #1d5445;
+  --checklist-done-color: #7d8b82;
+}
+
+/* ============================================
+   SHARED STYLES — Both Modes
+   ============================================ */
+
+/* ── Scanline / CRT effect for dark mode ── */
+.theme-dark .markdown-reading-view,
+.theme-dark .markdown-source-view {
+  /* fire10 grid + sun glow, layered over the CRT scanline */
+  background-image:
+    linear-gradient(rgba(201, 227, 108, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(201, 227, 108, 0.03) 1px, transparent 1px),
+    radial-gradient(circle at 92% 2%, rgba(233, 185, 73, 0.1), transparent 24rem),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.06) 2px,
+      rgba(0, 0, 0, 0.06) 4px
+    );
+  background-size: 28px 28px, 28px 28px, 100% 100%, auto;
+  background-attachment: local, local, fixed, local;
+}
+
+/* ── Light mode: fire10 paper grid + sun glow ── */
+.theme-light .markdown-reading-view,
+.theme-light .markdown-source-view {
+  background-image:
+    linear-gradient(rgba(24, 54, 45, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 54, 45, 0.04) 1px, transparent 1px),
+    radial-gradient(circle at 92% 2%, rgba(233, 185, 73, 0.16), transparent 24rem);
+  background-size: 28px 28px, 28px 28px, 100% 100%;
+  background-attachment: local, local, fixed;
+}
+
+/* ── Headings ── */
+h1, .cm-header-1, .markdown-rendered h1, .inline-title {
+  font-weight: 700 !important;
+  letter-spacing: 2px;
+  border-bottom: none;
+  text-decoration: underline;
+  text-decoration-color: #e9b949; /* sun underline (fire10) */
+  text-decoration-thickness: 2px;
+  text-underline-offset: 6px;
+}
+
+h2, .cm-header-2, .markdown-rendered h2 {
+  font-weight: 700 !important;
+  letter-spacing: 1px;
+}
+
+h3, .cm-header-3, .markdown-rendered h3 {
+  font-weight: 600 !important;
+}
+
+/* ── Dark mode: prompt prefix on headings ── */
+.theme-dark h1::before, .theme-dark .markdown-rendered h1::before {
+  content: "> ";
+  opacity: 0.5;
+}
+
+/* ── Links: always underlined, sun-colored underline (fire10) ── */
+a {
+  text-decoration: underline !important;
+  text-decoration-color: var(--link-decoration-color, #e9b949) !important;
+  text-decoration-thickness: 2px;
+  text-underline-offset: 0.16em;
+}
+
+/* ── Blockquotes ── */
+blockquote, .markdown-rendered blockquote {
+  border-left-width: 3px;
+  font-style: normal;
+  background: transparent;
+}
+
+/* ── Code blocks ── */
+.theme-dark pre, .theme-dark code {
+  border: 1px solid #1d5445;
+}
+.theme-light pre, .theme-light code {
+  border: 1px solid #cfc4ae;
+}
+pre {
+  padding: 12px !important;
+}
+
+/* ── fire10 signature: hard offset shadow on blocks ── */
+.theme-light pre,
+.theme-light .callout,
+.theme-light .markdown-embed {
+  box-shadow: 5px 6px 0 rgba(24, 54, 45, 0.13);
+}
+.theme-dark pre,
+.theme-dark .callout,
+.theme-dark .markdown-embed {
+  box-shadow: 5px 6px 0 rgba(0, 0, 0, 0.35);
+}
+
+/* ── HR ── */
+hr, .markdown-rendered hr {
+  border: none;
+  border-top: 1px solid;
+  opacity: 0.4;
+}
+
+/* ── Cursor: block-style terminal ── */
+.cm-cursor, .cm-cursor-primary {
+  border-left-width: 0.6em !important;
+  opacity: 0.7;
+}
+.theme-dark .cm-cursor, .theme-dark .cm-cursor-primary {
+  border-color: #c9e36c !important;  /* lime */
+}
+.theme-light .cm-cursor, .theme-light .cm-cursor-primary {
+  border-color: #123c32 !important;  /* forest */
+}
+
+@keyframes terminal-blink {
+  0%, 49% { opacity: 0.8; }
+  50%, 100% { opacity: 0; }
+}
+.cm-cursor, .cm-cursor-primary {
+  animation: terminal-blink 1s step-end infinite;
+}
+
+/* ── Scrollbars ── */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+.theme-dark ::-webkit-scrollbar-thumb {
+  background: rgba(201, 227, 108, 0.22);
+  border: 1px solid #1d5445;
+}
+.theme-light ::-webkit-scrollbar-thumb {
+  background: #cfc4ae;
+  border: 1px solid #b9ac91;
+}
+
+/* ── Light mode buttons (not icons) ── */
+.theme-light button:not(.clickable-icon) {
+  border: 1px solid #123c32 !important;
+  border-radius: 0 !important;
+  background: #fffdf7;
+  color: #18362d !important;
+}
+.theme-light button:not(.clickable-icon):hover {
+  background: #123c32;
+  color: #fffaf0 !important;
+}
+.theme-light button:not(.clickable-icon):active {
+  background: #1d5445;
+  color: #fffaf0;
+}
+
+/* ── Light mode inputs ── */
+.theme-light input[type="text"],
+.theme-light textarea,
+.theme-light .search-input {
+  border: 1px solid #123c32 !important;
+  border-radius: 0 !important;
+  background: #fffdf7;
+}
+.theme-light input[type="text"]:focus,
+.theme-light textarea:focus,
+.theme-light .search-input:focus {
+  box-shadow: 3px 3px 0 #c9e36c;  /* lime focus (fire10) */
+}
+
+/* ── Selection ── */
+.theme-dark ::selection {
+  background: rgba(201, 227, 108, 0.28);
+  color: #fdf8ec;
+}
+.theme-light ::selection {
+  background: #123c32;
+  color: #fffaf0;
+}
+
+/* ── Bold: slight lime glow in dark mode ── */
+.theme-dark strong, .theme-dark .cm-strong {
+  color: #d8ec8f;
+  text-shadow: 0 0 2px rgba(201, 227, 108, 0.3);
+}
+
+/* ── Dark mode ambient phosphor glow (lime) ── */
+.theme-dark .markdown-reading-view p,
+.theme-dark .markdown-source-view .cm-line {
+  text-shadow: 0 0 2px rgba(201, 227, 108, 0.08);
+}
+
+/* ── Status bar ── */
+.theme-dark .status-bar {
+  background: #0a231c;
+  border-top: 1px solid #1d5445;
+  color: #a7bcac;
+}
+.theme-light .status-bar {
+  background: #e9e1cf;
+  border-top: 1px solid #cfc4ae;
+  color: #18362d;
+}
+
+/* ── Ribbon ── */
+.theme-dark .workspace-ribbon {
+  background: #0a231c;
+  border-right: 1px solid #1d5445;
+}
+.theme-light .workspace-ribbon {
+  background: #e9e1cf;
+  border-right: 1px solid #cfc4ae;
+}
+
+/* ── Checkbox: square ── */
+input[type="checkbox"] {
+  border-radius: 0 !important;
+}
+.theme-dark input[type="checkbox"] {
+  border-color: #c9e36c;
+}
+.theme-light input[type="checkbox"] {
+  border-color: #123c32;
+}
+
+/* ── Tables ── */
+.theme-dark table {
+  border-color: #1d5445;
+}
+.theme-light table {
+  border-color: #cfc4ae;
+}
+th, td {
+  border-width: 1px !important;
+  border-style: solid !important;
+}
+
+/* ── File explorer ── */
+.nav-file-title, .nav-folder-title {
+  font-family: var(--font-monospace-theme);
+  font-size: 13px;
+}
+
+/* Properties / frontmatter — nuclear option */
+.metadata-container,
+.metadata-container *,
+.metadata-container input,
+.metadata-container textarea,
+.metadata-container select,
+.metadata-container button,
+.metadata-container label,
+.metadata-container .metadata-property-key,
+.metadata-container .metadata-property-value,
+.metadata-container .multi-select-pill,
+.metadata-add-button,
+.metadata-add-button *,
+.sync-log-container,
+.sync-log-container *,
+.sync-log-text,
+.sync-log-text * {
+  font-family: "Monaco", "Menlo", "IBM Plex Mono", "Cascadia Mono", "Courier New", monospace !important;
+  --font-interface: "Monaco", "Menlo", "IBM Plex Mono", "Cascadia Mono", "Courier New", monospace;
+  --font-text: "Monaco", "Menlo", "IBM Plex Mono", "Cascadia Mono", "Courier New", monospace;
+}
+
+/* no file tree prefixes — clean like light mode */
+
+/* ── Light mode: Chicago-inspired clean sidebar ── */
+.theme-light .side-dock-title,
+.theme-light .nav-folder-title {
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
